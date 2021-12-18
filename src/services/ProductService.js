@@ -6,7 +6,8 @@ let instance = null
 
 class ProductService {
   async insert(product) {
-    return await ProductModel.create(product)
+    const result = await ProductModel.create(product)
+    return result.toObject()
   }
 
   async get(id) {
@@ -19,6 +20,11 @@ class ProductService {
 
   async delete(id) {
     return await ProductModel.deleteOne({ _id: id })
+  }
+
+  async update(product) {
+    await ProductModel.updateOne({_id: product._id}, product)
+    return product
   }
 
   static getInstance() {

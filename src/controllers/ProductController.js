@@ -31,7 +31,7 @@ class ProductController {
    * @param {import('express').Response} res
    */
   async post(req, res) {
-    const product = ProductService.getInstance().insert(req.body)
+    const product = await ProductService.getInstance().insert(req.body)
     res.json(product)
   }
 
@@ -41,9 +41,9 @@ class ProductController {
    * @param {import('express').Response} res
    */
   async put(req, res) {
-    const existentProduct = await ProductService.getInstance().get(req.body.id)
+    const existentProduct = await ProductService.getInstance().get(req.body._id)
     if(existentProduct == null) {
-      res.status(404).send({message: 'Not found'})
+      res.status(404).json({message: 'Not found'})
     }
     const product = ProductService.getInstance().update(req.body)
     res.json(product)
@@ -55,10 +55,10 @@ class ProductController {
    * @param {import('express').Response} res
    */
   async delete(req, res) {
-    const existentProduct = await ProductService.getInstance().get(req.body.id)
+    const existentProduct = await ProductService.getInstance().get(req.params.id)
 
     if(existentProduct == null) {
-      res.status(404).send({message: 'Not found'})
+      res.status(404).json({message: 'Not found'})
     }
 
     await ProductService.getInstance().delete(req.params.id)

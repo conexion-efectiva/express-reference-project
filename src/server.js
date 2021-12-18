@@ -10,7 +10,9 @@ require('dotenv').config()
 const productRoutes = require('./routes/productRoutes')
 const userRoutes = require('./routes/userRoutes')
 
-main().catch((err) => console.log(err))
+main()
+  .then(() => console.log('Base de datos conectada'))
+  .catch((err) => console.log(err))
 
 async function main() {
   await mongoose.connect(process.env.DB_MONGO)
@@ -19,6 +21,6 @@ async function main() {
 app.use('/api', productRoutes)
 app.use('/api', userRoutes)
 
-app.listen(() => {
+app.listen(port, () => {
   console.log('App listening on port ', port)
 })
