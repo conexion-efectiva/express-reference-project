@@ -5,6 +5,7 @@ const UserModel = require('../persistence/UserModel')
 let instance = null
 
 class UserService {
+
   async insert(user) {
     return await UserModel.create(user)
   }
@@ -19,6 +20,11 @@ class UserService {
 
   async delete(id) {
     return await UserModel.deleteOne({ _id: id })
+  }
+
+  async update(user) {
+    await UserModel.updateOne({_id: user._id}, user)
+    return user
   }
 
   static getInstance() {

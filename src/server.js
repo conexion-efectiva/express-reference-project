@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 8080
+const initializeAuthentication = require('./auth/initializeAuthentication')
+const jwtAuthenticationMiddleware = require('./middleware/jwtAuthenticationMiddleware')
 
 app.use(express.json())
 
@@ -9,6 +11,7 @@ require('dotenv').config()
 
 const productRoutes = require('./routes/productRoutes')
 const userRoutes = require('./routes/userRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 main()
   .then(() => console.log('Base de datos conectada'))
@@ -18,8 +21,11 @@ async function main() {
   await mongoose.connect(process.env.DB_MONGO)
 }
 
-app.use('/api', productRoutes)
+initializeAuthentication()
+
+app.use('/api', jwtAuthenticationMiddleware, productRoutes)
 app.use('/api', userRoutes)
+app.use(authRoutes)
 
 app.listen(port, () => {
   console.log('App listening on port ', port)
