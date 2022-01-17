@@ -45,7 +45,7 @@ class ProductController {
     if(existentProduct == null) {
       res.status(404).json({message: 'Not found'})
     }
-    const product = ProductService.getInstance().update(req.body)
+    const product = await ProductService.getInstance().update(req.body)
     res.json(product)
   }
 

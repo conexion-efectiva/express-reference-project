@@ -23,9 +23,9 @@ async function main() {
 
 initializeAuthentication()
 
-app.use('/api', jwtAuthenticationMiddleware, productRoutes)
+app.use('/api', authRoutes)
 app.use('/api', userRoutes)
-app.use(authRoutes)
+app.use('/api', jwtAuthenticationMiddleware, productRoutes)
 
 app.listen(port, () => {
   console.log('App listening on port ', port)
