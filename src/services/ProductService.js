@@ -1,4 +1,4 @@
-const ProductModel = require('../persistence/ProductModel')
+import ProductModel from '../persistence/ProductModel.js'
 /**
  * @type ProductService
  */
@@ -36,4 +36,4 @@ class ProductService {
   }
 }
 
-module.exports = ProductService
+export default ProductService

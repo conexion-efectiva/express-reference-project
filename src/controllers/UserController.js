@@ -1,4 +1,4 @@
-const UserService = require('../services/UserService')
+import UserService from '../services/UserService.js'
 /**
  * @type UserController
  */
@@ -75,4 +75,4 @@ class UserController {
   }
 }
 
-module.exports = UserController
+export default UserController

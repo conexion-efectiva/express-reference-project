@@ -1,4 +1,4 @@
-const joi = require('joi')
+import joi from 'joi'
 
 const userSchema = joi.object({
   name: joi.string().required(),
@@ -13,4 +13,4 @@ const userUpdateSchema = joi.object({
   _id: joi.string().required()
 })
 
-module.exports = { userSchema, userUpdateSchema }
+export { userSchema, userUpdateSchema }

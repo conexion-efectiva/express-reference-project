@@ -1,4 +1,4 @@
-const UserModel = require('../persistence/UserModel')
+import UserModel from '../persistence/UserModel.js'
 /**
  * @type UserService
  */
@@ -36,4 +36,4 @@ class UserService {
   }
 }
 
-module.exports = UserService
+export default UserService

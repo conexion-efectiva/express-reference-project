@@ -1,17 +1,18 @@
-const express = require('express')
+import express, { json } from 'express'
 const app = express()
 const port = process.env.PORT || 8080
-const initializeAuthentication = require('./auth/initializeAuthentication')
-const jwtAuthenticationMiddleware = require('./middleware/jwtAuthenticationMiddleware')
+import initializeAuthentication from './auth/initializeAuthentication.js'
+import jwtAuthenticationMiddleware from './middleware/jwtAuthenticationMiddleware.js'
 
-app.use(express.json())
+app.use(json())
 
-const mongoose = require('mongoose')
-require('dotenv').config()
+import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+dotenv.config()
 
-const productRoutes = require('./routes/productRoutes')
-const userRoutes = require('./routes/userRoutes')
-const authRoutes = require('./routes/authRoutes')
+import productRoutes from './routes/productRoutes.js'
+import userRoutes from './routes/userRoutes.js'
+import authRoutes from './routes/authRoutes.js'
 
 main()
   .then(() => console.log('Base de datos conectada'))

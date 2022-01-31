@@ -1,8 +1,8 @@
-const passport = require('passport')
-const localStrategy = require('passport-local').Strategy
-const UserModel = require('../persistence/UserModel')
-const JwtStrategy = require('passport-jwt').Strategy
-const ExtractJwt = require('passport-jwt').ExtractJwt
+import passport from 'passport'
+import { Strategy as localStrategy } from 'passport-local'
+import UserModel from '../persistence/UserModel.js'
+import { Strategy as JwtStrategy } from 'passport-jwt'
+import { ExtractJwt } from 'passport-jwt'
 
 function initializeAuthentication() {
   passport.use(
@@ -69,4 +69,4 @@ function initializeAuthentication() {
   console.log('Authentication initialized')
 }
 
-module.exports = initializeAuthentication
+export default initializeAuthentication

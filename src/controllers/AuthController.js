@@ -1,6 +1,6 @@
-const passport = require('passport')
-const jwt = require('jsonwebtoken')
-const UserService = require('../services/UserService')
+import passport from 'passport'
+import jsonwebtoken from 'jsonwebtoken'
+import UserService from '../services/UserService.js'
 let instance = null
 
 class AuthController {
@@ -39,7 +39,7 @@ class AuthController {
           }
 
           const body = { _id: user._id, email: user.email }
-          const token = jwt.sign({ user: body }, process.env.TOKEN_SECRET)
+          const token = jsonwebtoken.sign({ user: body }, process.env.TOKEN_SECRET)
 
           return res.json({ token })
         })
@@ -62,4 +62,4 @@ class AuthController {
   }
 }
 
-module.exports = AuthController
+export default AuthController

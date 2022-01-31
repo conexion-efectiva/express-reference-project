@@ -1,5 +1,5 @@
-const passport = require('passport')
+import passport from 'passport'
 
 const jwtAuthenticationMiddleware = passport.authenticate('jwt', {session: false})
 
-module.exports = jwtAuthenticationMiddleware
+export default jwtAuthenticationMiddleware

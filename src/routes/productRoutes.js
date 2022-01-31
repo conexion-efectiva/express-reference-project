@@ -1,8 +1,8 @@
-const express = require('express')
-const router = express.Router()
-const ProductController = require('../controllers/ProductController')
-const validateBody = require('../middleware/validateBody')
-const { productSchema, productUpdateSchema } = require('../validators/productValidator')
+import { Router } from 'express'
+const router = Router()
+import ProductController from '../controllers/ProductController.js'
+import validateBody from '../middleware/validateBody.js'
+import { productSchema, productUpdateSchema } from '../validators/productValidator.js'
 router.get('/products', (req, res) =>
   ProductController.getInstance().getList(req, res)
 )
@@ -15,4 +15,4 @@ router.delete('/products/:id', (req, res) =>
   ProductController.getInstance().delete(req, res)
 )
 
-module.exports = router
+export default router

@@ -1,10 +1,10 @@
-const express = require('express')
-const passport = require('passport')
-const router = express.Router()
-const AuthController = require('../controllers/AuthController')
-const validateBody = require('../middleware/validateBody')
-const { authLoginSchema } = require('../validators/authValidator')
-const { userSchema } = require('../validators/userValidator')
+import { Router } from 'express'
+import passport from 'passport'
+const router = Router()
+import AuthController from '../controllers/AuthController.js'
+import validateBody from '../middleware/validateBody.js'
+import { authLoginSchema } from '../validators/authValidator.js'
+import { userSchema } from '../validators/userValidator.js'
 
 router.post(
   '/signup',
@@ -19,4 +19,4 @@ router.post('/login', validateBody(authLoginSchema), (req, res, next) => {
   AuthController.getInstance().login(req, res, next)
 })
 
-module.exports = router
+export default router

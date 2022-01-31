@@ -1,8 +1,8 @@
-const express = require('express')
-const router = express.Router()
-const UserController = require('../controllers/UserController')
-const validateBody = require('../middleware/validateBody')
-const {userSchema, userUpdateSchema } = require('../validators/userValidator')
+import { Router } from 'express'
+const router = Router()
+import UserController from '../controllers/UserController.js'
+import validateBody from '../middleware/validateBody.js'
+import { userSchema, userUpdateSchema } from '../validators/userValidator.js'
 
 router.get('/user', (req, res) =>
   UserController.getInstance().getList(req, res)
@@ -16,4 +16,4 @@ router.delete('/user', (req, res) =>
   UserController.getInstance().delete(req, res)
 )
 
-module.exports = router
+export default router

@@ -1,4 +1,4 @@
-const ProductService = require('../services/ProductService')
+import ProductService from '../services/ProductService.js'
 /**
  * @type ProductController
  */
@@ -75,4 +75,4 @@ class ProductController {
   }
 }
 
-module.exports = ProductController
+export default ProductController

@@ -9,4 +9,4 @@ function validateBody(schema) {
   }
 }
 
-module.exports = validateBody
+export default validateBody
