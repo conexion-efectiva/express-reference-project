@@ -41,12 +41,13 @@ class UserController {
    * @param {import('express').Response} res
    */
   async put(req, res) {
-    const existentUser = await UserService.getInstance().get(req.body._id)
+    const existentUser = await UserService.getInstance().get(req.params.id)
     if (existentUser == null) {
       res.status(404).json({})
       return
     }
-    const user = await UserService.getInstance().update(req.body)
+    let user = {...req.body, _id: req.params.id} 
+    user = await UserService.getInstance().update(user)
     res.json(user)
   }
 
